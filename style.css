@@ -1,0 +1,315 @@
+:root {
+  --bg: #eef1f5;
+  --text: #2c3e50;
+  --card-bg: #ffffff;
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --border-color: #bdc3c7;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --bg: #2c3e50;
+  --text: #ecf0f1;
+  --card-bg: #34495e;
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --border-color: #7f8c8d;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#themeToggle {
+  background-color: transparent;
+  color: var(--text);
+  border: 2px solid var(--text);
+  padding: 8px 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+#themeToggle:hover {
+  background-color: var(--text);
+  color: var(--bg);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.controls form {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.file-upload {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+}
+
+.custom-file-upload:hover {
+  background-color: #2980b9;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+input[type="text"], #searchBar, button {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+  color: var(--text);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, #searchBar:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#addBtn {
+  background-color: var(--secondary-color);
+  color: white;
+  flex-grow: 1;
+}
+
+#addBtn:hover {
+  background-color: #27ae60;
+  transform: translateY(-2px);
+}
+
+#uploadBtn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+#uploadBtn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+#dropZone {
+  width: calc(100% - 40px);
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 40px;
+  border: 2px dashed var(--primary-color);
+  border-radius: 12px;
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+#dropZone.dragover {
+  background-color: rgba(52, 152, 219, 0.1);
+  border-color: #2980b9;
+}
+
+#searchBar {
+  display: block;
+  width: calc(100% - 40px);
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 15px;
+  background-color: var(--card-bg);
+  box-shadow: 0 5px 15px var(--shadow-color);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  border-radius: 15px 15px 0 0;
+  cursor: pointer;
+}
+
+.deleteBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(231, 76, 60, 0.9);
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .deleteBtn {
+  opacity: 1;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #c0392b;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+.nav:hover {
+  color: var(--primary-color);
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+  
+  .controls {
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .controls form {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  input[type="text"], #searchBar {
+    width: 90%;
+  }
+
+  #dropZone {
+    width: 90%;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}

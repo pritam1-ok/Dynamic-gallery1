@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Image Gallery</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Dynamic Image Gallery</h1>
+    <button id="themeToggle">🌙 Dark Mode</button>
+  </header>
+
+  <main>
+    <section class="controls">
+      <form id="imageForm">
+        <input type="text" id="imgUrl" placeholder="Enter image URL..." aria-label="Image URL">
+        <button type="submit" id="addBtn">Add URL</button>
+      </form>
+      <div class="file-upload">
+        <label for="imgUpload" class="custom-file-upload">
+          Select an Image
+        </label>
+        <input type="file" id="imgUpload" accept="image/*">
+        <button id="uploadBtn">Upload</button>
+      </div>
+    </section>
+
+    <div id="dropZone">
+      <p>📂 Drag & Drop Images Here</p>
+    </div>
+
+    <input type="text" id="searchBar" placeholder="Search images..." aria-label="Search images">
+
+    <div class="gallery" id="gallery"></div>
+  </main>
+
+  <div id="imgModal" class="modal">
+    <div class="modal-content-wrapper">
+      <span class="close">&times;</span>
+      <span class="nav prev">&#10094;</span>
+      <img class="modal-content" id="modalImg" alt="Enlarged gallery image">
+      <span class="nav next">&#10095;</span>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
